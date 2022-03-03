@@ -55,7 +55,7 @@ export default class LoginForm extends Component {
       Cookies.set('jwt_token', jwtToken, {expires: 30})
       const {history} = this.props
       history.replace('/')
-    } else {
+    } else if (data.status_code === 400) {
       const errorMsg = data.error_msg
       this.setState({showSubmitError: true, errorMsg})
     }
@@ -77,7 +77,7 @@ export default class LoginForm extends Component {
       <LoginAppContainer>
         <LgWebsiteImageEl
           src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646126939/InstaShareWebLogo_hmfmhc.jpg"
-          alt="website image"
+          alt="website login"
         />
         <LoginContainer>
           <WebsiteLogo

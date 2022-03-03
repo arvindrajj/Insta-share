@@ -13,7 +13,7 @@ import {
   LgNavMenu,
   SearchContainer,
   InputEl,
-  SearchIconContainer,
+  SearchIconButton,
   LinkItem,
   CustomButton,
   BarIcon,
@@ -134,9 +134,9 @@ class Header extends Component {
                 value={searchInput}
                 onChange={this.changeInput}
               />
-              <SearchIconContainer>
+              <SearchIconButton type="button" testid="searchIcon">
                 <FaSearch height="10" width="10" />
-              </SearchIconContainer>
+              </SearchIconButton>
             </SearchContainer>
             {selectedTabConstance.map(each => (
               <ButtonEl

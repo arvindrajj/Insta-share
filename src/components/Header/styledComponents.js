@@ -5,12 +5,15 @@ import {FaBars} from 'react-icons/fa'
 export const NavContainer = styled.nav`
   width: 100vw;
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: #ffffff;
   height: 64px;
 `
 
 export const ContentContainer = styled.div`
   width: 80%;
+  max-width: 1100px;
   height: 64px;
   display: flex;
   justify-content: space-between;
@@ -108,7 +111,9 @@ export const InputEl = styled.input`
   padding: 7px;
 `
 
-export const SearchIconContainer = styled.div`
+export const SearchIconButton = styled.button`
+  border: none;
+  background-color: transparent;
   width: 34px;
   height: 28px;
   display: flex;
