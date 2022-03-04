@@ -4,15 +4,15 @@ import {FaBars} from 'react-icons/fa'
 
 export const NavContainer = styled.nav`
   width: 100vw;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #ffffff;
+  bottom: 20;
   height: 64px;
+  position: fixed;
 `
 
 export const ContentContainer = styled.div`
   width: 80%;
+  max-width: 1100px;
+  background-color: #ffffff;
   max-width: 1100px;
   height: 64px;
   display: flex;
@@ -49,6 +49,7 @@ export const Heading = styled.h1`
   font-weight: 500;
   font-size: 20px;
   color: #262626;
+  min-width: 108px;
   @media all and (max-width: 380px) {
     font-size: 16px;
     min-width: 92px;
@@ -57,12 +58,16 @@ export const Heading = styled.h1`
 
 export const LgNavMenu = styled.div`
   display: flex;
+
   align-items: center;
   @media all and (max-width: 779px) {
     display: none;
   }
 `
+
 export const SmNavMenu = styled.div`
+  width: 80%;
+  justify-content: flex-end;
   display: flex;
   align-items: center;
   @media all and (min-width: 780px) {
@@ -72,13 +77,16 @@ export const SmNavMenu = styled.div`
     display: none;
   }
 `
+
 export const VerySmNavMenu = styled.div`
   display: flex;
-  width: 80%;
-  margin-top: -20px;
+  width: 100%;
+  margin-top: -18px;
+  background-color: #ffffff;
   margin-left: 25px;
+  justify-content: center;
   align-items: center;
-  @media all and (min-width: 513px) {
+  @media all and (min-width: 512px) {
     display: none;
   }
 `
@@ -100,6 +108,18 @@ export const SearchContainer = styled.div`
   box-sizing: border-box;
   border-radius: 3px;
   margin-right: 32px;
+  @media all and (max-width: 992px) {
+    margin-right: 18px;
+  }
+  @media all and (max-width: 814px) {
+    margin-left: 10px;
+  }
+  @media all and (max-width: 544px) {
+    width: 195px;
+  }
+  @media all and (max-width: 512px) {
+    width: 214px;
+  }
 `
 
 export const InputEl = styled.input`
@@ -109,6 +129,12 @@ export const InputEl = styled.input`
   border: 1px solid #dbdbdb;
   outline: none;
   padding: 7px;
+  @media all and (max-width: 544px) {
+    width: 160px;
+  }
+  @media all and (max-width: 512px) {
+    width: 179px;
+  }
 `
 
 export const SearchIconButton = styled.button`
@@ -134,8 +160,11 @@ export const LinkItem = styled(Link)`
     text-decoration: underline #409ef4 2px;
   }
   color: ${props => (props.selected ? '#4094EF' : '#262626')};
+  @media all and (max-width: 814px) {
+    margin-right: 10px;
+  }
   @media all and (max-width: 380px) {
-    display: 14px;
+    font-size: 14px;
   }
 `
 export const ButtonEl = styled.button`

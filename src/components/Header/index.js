@@ -46,6 +46,7 @@ class Header extends Component {
     searchInput: '',
     showSmNavMenu: false,
     selectedTab: selectedTabConstance[0].tabId,
+    showSearchContainer: false,
   }
 
   componentDidMount() {
@@ -68,6 +69,7 @@ class Header extends Component {
 
   onToggleNavMenu = () => {
     this.setState(prevState => ({showSmNavMenu: !prevState.showSmNavMenu}))
+    this.setState({showSearchContainer: false})
   }
 
   onChangeSelectedTab = tabId => {
@@ -75,46 +77,79 @@ class Header extends Component {
     localStorage.setItem('selectedTab', JSON.stringify(tabId))
   }
 
+  onEnterPostCaption = event => {
+    const {searchInput} = this.state
+    const {searchPostCaption} = this.props
+    if (event.key === 'Enter') {
+      searchPostCaption(searchInput)
+    }
+  }
+
+  onSearchPostCaption = () => {
+    const {searchInput} = this.state
+    const {searchPostCaption} = this.props
+    searchPostCaption(searchInput)
+  }
+
+  showSearchContainer = () => {
+    this.onChangeSelectedTab('SEARCH')
+    this.onToggleNavMenu()
+    this.setState({showSearchContainer: true})
+  }
+
   renderMenu = () => {
     let {selectedTab} = this.state
     selectedTab = JSON.parse(localStorage.getItem('selectedTab'))
     return (
-      <>
-        <SmNavItems>
-          <LinkItem
-            to="/"
-            selected={selectedTab === 'HOME'}
-            onClick={() => this.onChangeSelectedTab('HOME')}
-          >
-            Home
+      <SmNavItems>
+        <LinkItem
+          to="/"
+          selected={selectedTab === 'HOME'}
+          onClick={() => this.onChangeSelectedTab('HOME')}
+        >
+          Home
+        </LinkItem>
+        <ButtonEl type="button" onClick={this.showSearchContainer}>
+          <LinkItem as="p" selected={selectedTab === 'SEARCH'}>
+            Search
           </LinkItem>
-          <ButtonEl
-            type="button"
-            onClick={() => this.onChangeSelectedTab('SEARCH')}
-          >
-            <LinkItem as="p" selected={selectedTab === 'SEARCH'}>
-              Search
-            </LinkItem>
-          </ButtonEl>
-          <LinkItem
-            to="/User-Profile"
-            selected={selectedTab === 'PROFILE'}
-            onClick={() => this.onChangeSelectedTab('PROFILE')}
-          >
-            Profile
-          </LinkItem>
-        </SmNavItems>
+        </ButtonEl>
+        <LinkItem
+          to="/User-Profile"
+          selected={selectedTab === 'PROFILE'}
+          onClick={() => this.onChangeSelectedTab('PROFILE')}
+        >
+          Profile
+        </LinkItem>
         <AiFillCloseCircle
           size="20"
           cursor="pointer"
           onClick={this.onToggleNavMenu}
         />
-      </>
+      </SmNavItems>
+    )
+  }
+
+  renderSearchContainer = () => {
+    const {searchInput} = this.state
+    return (
+      <SearchContainer>
+        <InputEl
+          type="search"
+          placeholder="Search Caption"
+          value={searchInput}
+          onKeyDown={this.onEnterPostCaption}
+          onChange={this.changeInput}
+        />
+        <SearchIconButton type="button" testid="searchIcon">
+          <FaSearch height="10" width="10" onClick={this.onSearchPostCaption} />
+        </SearchIconButton>
+      </SearchContainer>
     )
   }
 
   render() {
-    const {searchInput, showSmNavMenu} = this.state
+    const {showSmNavMenu, showSearchContainer} = this.state
     const selectedTab = JSON.parse(localStorage.getItem('selectedTab'))
     return (
       <NavContainer>
@@ -127,17 +162,7 @@ class Header extends Component {
             <Heading>Insta Share</Heading>
           </WebsiteLogoLinkItem>
           <LgNavMenu>
-            <SearchContainer>
-              <InputEl
-                type="search"
-                placeholder="Search Caption"
-                value={searchInput}
-                onChange={this.changeInput}
-              />
-              <SearchIconButton type="button" testid="searchIcon">
-                <FaSearch height="10" width="10" />
-              </SearchIconButton>
-            </SearchContainer>
+            {this.renderSearchContainer()}
             {selectedTabConstance.map(each => (
               <ButtonEl
                 type="button"
@@ -156,6 +181,9 @@ class Header extends Component {
               Logout
             </CustomButton>
           </LgNavMenu>
+          {showSearchContainer && (
+            <SmNavMenu>{this.renderSearchContainer()}</SmNavMenu>
+          )}
           {showSmNavMenu ? (
             <SmNavMenu>{this.renderMenu()}</SmNavMenu>
           ) : (
@@ -163,6 +191,9 @@ class Header extends Component {
           )}
         </ContentContainer>
         {showSmNavMenu && <VerySmNavMenu>{this.renderMenu()}</VerySmNavMenu>}
+        {showSearchContainer && (
+          <VerySmNavMenu>{this.renderSearchContainer()}</VerySmNavMenu>
+        )}
       </NavContainer>
     )
   }

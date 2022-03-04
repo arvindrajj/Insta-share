@@ -6,7 +6,14 @@ import LoadingView from '../LoadingView'
 import FailureView from '../FailureView'
 import UserPost from '../UserPost'
 
-import {LoaderContainer, HomeRoute, UserPostsListEl} from './styledComponents'
+import {
+  LoaderContainer,
+  BodyContainer,
+  HomeRoute,
+  UserPostsListEl,
+} from './styledComponents'
+
+import './index.css'
 
 const apiStatusConstance = {
   initial: 'INITIAL',
@@ -21,6 +28,7 @@ export default class Home extends Component {
     usersStoriesApiStatus: apiStatusConstance.initial,
     userPostsList: [],
     userPostsApiStatus: apiStatusConstance.initial,
+    searchInput: '',
   }
 
   componentDidMount() {
@@ -56,9 +64,10 @@ export default class Home extends Component {
   }
 
   fetchUserPosts = async () => {
+    const {searchInput} = this.state
     this.setState({userPostsApiStatus: apiStatusConstance.loading})
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = 'https://apis.ccbp.in/insta-share/posts'
+    const apiUrl = `https://apis.ccbp.in/insta-share/posts?search=${searchInput}`
     const options = {
       method: 'GET',
       headers: {
@@ -78,6 +87,7 @@ export default class Home extends Component {
           caption: each.post_details.caption,
         },
         likesCount: each.likes_count,
+        isLiked: false,
         comments: each.comments.map(eachComment => ({
           userName: eachComment.user_name,
           userId: eachComment.user_id,
@@ -120,11 +130,31 @@ export default class Home extends Component {
   renderUserPosts = () => {
     const {userPostsList} = this.state
     return (
-      <UserPostsListEl>
-        {userPostsList.map(each => (
-          <UserPost key={each.postId} userPostDetails={each} />
-        ))}
-      </UserPostsListEl>
+      <>
+        {userPostsList.length > 0 ? (
+          <UserPostsListEl>
+            {userPostsList.map(each => (
+              <UserPost
+                key={each.postId}
+                userPostDetails={each}
+                comments={each.comments}
+              />
+            ))}
+          </UserPostsListEl>
+        ) : (
+          <div className="search-not-found-container">
+            <img
+              src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646411751/GroupsearchNotFound_xxrrzm.jpg"
+              alt="search not found"
+              className="search-not-found-image"
+            />
+            <h1 className="search-not-found-heading">Search Not Found</h1>
+            <p className="search-not-found-description">
+              Try different keyword or search again
+            </p>
+          </div>
+        )}
+      </>
     )
   }
 
@@ -142,12 +172,18 @@ export default class Home extends Component {
     }
   }
 
+  searchPostCaption = caption => {
+    this.setState({searchInput: caption}, this.fetchUserPosts)
+  }
+
   render() {
     return (
       <HomeRoute>
-        <Header />
-        {this.renderAllUsersStories()}
-        {this.renderUsersAllPosts()}
+        <Header searchPostCaption={this.searchPostCaption} />
+        <BodyContainer>
+          {this.renderAllUsersStories()}
+          {this.renderUsersAllPosts()}
+        </BodyContainer>
       </HomeRoute>
     )
   }

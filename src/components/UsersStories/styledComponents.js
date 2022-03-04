@@ -7,12 +7,17 @@ export const UsersStoryContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+  flex-shrink: 0;
+  margin: 0;
   padding-top: 64px;
+  @media all and (max-width: 512px) {
+    padding-top: 80px;
+  }
 `
 
 export const SliderContainer = styled(Slider)`
   width: 80%;
+  background-color: #ffffff;
   max-width: 1100px;
 `
 
@@ -28,7 +33,7 @@ export const StoryImage = styled.img`
   height: 70px;
   width: 70px;
   border-radius: 35px;
-  @media all and (max-width: 510px) {
+  @media all and (max-width: 512px) {
     height: 50px;
     width: 50px;
     border-radius: 25px;
@@ -40,7 +45,7 @@ export const Para = styled.p`
   font-size: 14px;
   line-height: 24px;
   color: #262626;
-  @media all and (max-width: 510px) {
+  @media all and (max-width: 512px) {
     font-size: 12px;
     margin-right: 2px;
   }
