@@ -7,7 +7,7 @@ import {BiShareAlt} from 'react-icons/bi'
 
 import {
   PostContainer,
-  ProfileContainer,
+  ProfileLink,
   ProfileImageEl,
   Heading,
   PostImageEl,
@@ -78,6 +78,7 @@ export default class UserPost extends Component {
   render() {
     const {newUserPostDetails} = this.state
     const {
+      userId,
       userName,
       profilePic,
       postDetails,
@@ -89,11 +90,11 @@ export default class UserPost extends Component {
     } = newUserPostDetails
     const latestComments = comments.slice(0, 2)
     return (
-      <PostContainer>
-        <ProfileContainer>
+      <PostContainer testid="postItem">
+        <ProfileLink to={`/users/${userId}`}>
           <ProfileImageEl src={profilePic} alt="post author profile" />
           <Heading>{userName}</Heading>
-        </ProfileContainer>
+        </ProfileLink>
         <PostImageEl src={postDetails.imageUrl} alt="post" />
         <PostContentContainer>
           <IconsContainer>

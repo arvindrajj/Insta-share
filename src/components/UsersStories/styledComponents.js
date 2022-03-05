@@ -30,13 +30,15 @@ export const StoryItem = styled.div`
 `
 
 export const StoryImage = styled.img`
-  height: 70px;
-  width: 70px;
-  border-radius: 35px;
+  height: 78px;
+  width: 78px;
+  padding: 3px;
+  background-color: #c6c6c8;
+  border-radius: 36px;
   @media all and (max-width: 512px) {
-    height: 50px;
-    width: 50px;
-    border-radius: 25px;
+    height: 55px;
+    width: 55px;
+    border-radius: 27px;
   }
 `
 

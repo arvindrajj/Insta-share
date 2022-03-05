@@ -111,7 +111,41 @@ export default class Home extends Component {
 
   renderLoaderView = () => <LoadingView />
 
-  renderFailureView = () => <FailureView />
+  tryAgainFetch = () => {
+    this.fetchUserStories()
+    this.fetchUserPosts()
+  }
+
+  renderHomeFailureView = () => (
+    <div className="home-failure-view-container">
+      <img
+        src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646452421/alert-triangle_b3w5vg.svg"
+        alt="failure view"
+        className="home-failure-view-image"
+      />
+      <h1 className="home-failure-view-heading">
+        Something went wrong. Please try again
+      </h1>
+      <button
+        type="button"
+        onClick={this.fetchUserPosts}
+        className="home-failure-view-button"
+      >
+        Try again
+      </button>
+    </div>
+  )
+
+  renderFailureView = () => {
+    const {usersStoriesApiStatus, userPostsApiStatus} = this.state
+    if (
+      userPostsApiStatus === usersStoriesApiStatus ||
+      usersStoriesApiStatus === 'FAILURE'
+    ) {
+      return <FailureView tryAgainFetch={this.tryAgainFetch} />
+    }
+    return this.renderHomeFailureView()
+  }
 
   renderAllUsersStories = () => {
     const {usersStoriesApiStatus} = this.state
@@ -159,13 +193,19 @@ export default class Home extends Component {
   }
 
   renderUsersAllPosts = () => {
-    const {userPostsApiStatus} = this.state
+    const {userPostsApiStatus, usersStoriesApiStatus} = this.state
     switch (userPostsApiStatus) {
       case 'SUCCESS':
+        if (usersStoriesApiStatus === 'FAILURE') {
+          return null
+        }
         return this.renderUserPosts()
       case 'LOADING':
         return this.renderLoaderView()
       case 'FAILURE':
+        if (usersStoriesApiStatus === 'FAILURE') {
+          return null
+        }
         return this.renderFailureView()
       default:
         return null

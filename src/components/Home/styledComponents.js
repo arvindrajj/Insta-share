@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const HomeRoute = styled.div`
   width: 100vw;
   height: auto;
-  position: relative;
+  position: absolute;
 `
+
 export const BodyContainer = styled.div`
   display: flex;
   flex-direction: column;

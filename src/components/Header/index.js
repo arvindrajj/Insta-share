@@ -31,7 +31,7 @@ const selectedTabConstance = [
   },
   {
     tabId: 'PROFILE',
-    link: 'User-Profile',
+    link: 'my-profile',
     displayedText: 'Profile',
   },
 ]
@@ -115,7 +115,7 @@ class Header extends Component {
           </LinkItem>
         </ButtonEl>
         <LinkItem
-          to="/User-Profile"
+          to="/my-profile"
           selected={selectedTab === 'PROFILE'}
           onClick={() => this.onChangeSelectedTab('PROFILE')}
         >

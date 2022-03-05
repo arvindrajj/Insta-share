@@ -59,3 +59,50 @@
     font-size: 15px;
   }
 }
+
+.home-failure-view-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.home-failure-view-image {
+  height: 100%;
+  width: 100%;
+  max-height: 54px;
+  max-width: 54px;
+}
+.home-failure-view-heading {
+  font-family: Roboto;
+  font-size: 28px;
+  color: #262626;
+}
+
+.home-failure-view-button {
+  height: 40px;
+  width: 110px;
+  background: #4094ef;
+  border-radius: 12px;
+  color: #ffffff;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+@media all and (max-width: 768px) {
+  .home-failure-view-heading {
+    font-size: 22px;
+  }
+}
+
+@media all and (max-width: 490px) {
+  .home-failure-view-heading {
+    font-size: 16px;
+  }
+  .home-failure-view-button {
+    height: 32px;
+    width: 102px;
+    border-radius: 8px;
+    font-size: 12px;
+  }
+}

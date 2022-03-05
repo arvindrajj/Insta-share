@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import {Link} from 'react-router-dom'
 
 export const PostContainer = styled.div`
   width: 80%;
@@ -12,10 +13,11 @@ export const PostContainer = styled.div`
   flex-direction: column;
   margin-bottom: 30px;
 `
-export const ProfileContainer = styled.div`
+export const ProfileLink = styled(Link)`
   display: flex;
   height: 60px;
   align-items: center;
+  text-decoration: none;
 `
 
 export const ProfileImageEl = styled.img`
@@ -29,11 +31,12 @@ export const Heading = styled.h1`
   font-family: 'Roboto';
   font-weight: 500;
   font-size: 14px;
+  color: #262626;
 `
 export const PostImageEl = styled.img`
   max-width: 1040px;
   width: 100%;
-  max-height: 814px;
+  max-height: 874px;
   height: 100%;
 `
 export const PostContentContainer = styled.div`
