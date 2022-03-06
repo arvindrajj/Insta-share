@@ -35,6 +35,7 @@ export const StoryImage = styled.img`
   padding: 3px;
   background-color: #c6c6c8;
   border-radius: 36px;
+  cursor: pointer;
   @media all and (max-width: 512px) {
     height: 55px;
     width: 55px;

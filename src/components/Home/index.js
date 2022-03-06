@@ -34,6 +34,7 @@ export default class Home extends Component {
   componentDidMount() {
     this.fetchUserStories()
     this.fetchUserPosts()
+    localStorage.setItem('selectedTab', JSON.stringify('HOME'))
   }
 
   fetchUserStories = async () => {

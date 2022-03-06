@@ -24,7 +24,7 @@ export default class MyProfile extends Component {
 
   componentDidMount() {
     this.fetchUserProfile()
-    localStorage.setItem('selectedTab', JSON.stringify('PROFILE'))
+    localStorage.setItem('selectedTab', JSON.stringify('NONE'))
   }
 
   fetchUserProfile = async () => {

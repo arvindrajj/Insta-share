@@ -36,11 +36,6 @@ const selectedTabConstance = [
   },
 ]
 
-localStorage.setItem(
-  'selectedTab',
-  JSON.stringify(selectedTabConstance[0].tabId),
-)
-
 class Header extends Component {
   state = {
     searchInput: '',
@@ -154,7 +149,10 @@ class Header extends Component {
     return (
       <NavContainer>
         <ContentContainer>
-          <WebsiteLogoLinkItem to="/">
+          <WebsiteLogoLinkItem
+            to="/"
+            onClick={() => this.onChangeSelectedTab('HOME')}
+          >
             <WebsiteLogo
               src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646127088/Standard_Collection_8_mvnxfo.svg"
               alt="website logo"
