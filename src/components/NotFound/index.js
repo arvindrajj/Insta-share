@@ -5,7 +5,6 @@ const NotFound = props => {
     const {history} = props
     history.replace('/')
   }
-  console.log('hello')
   return (
     <div className="page-not-found-container">
       <img

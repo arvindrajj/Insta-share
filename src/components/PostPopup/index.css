@@ -1,0 +1,147 @@
+.profile-post-item {
+  list-style-type: none;
+  margin-bottom: 5px;
+  width: 33.33333%;
+  cursor: pointer;
+}
+.profile-post-image {
+  max-width: 330px;
+  width: 96%;
+  max-height: 330px;
+  height: 96%;
+}
+
+@media all and (max-width: 530px) {
+  .profile-post-image {
+    max-width: 118px;
+    max-height: 118px;
+  }
+}
+.pop-up-image-and-content {
+  display: flex;
+}
+.pop-up-image {
+  min-width: 55%;
+  max-width: 55%;
+  max-height: 650px;
+  min-height: 350px;
+  width: 100%;
+  height: 100%;
+}
+.popup-content {
+  background-color: #ffffff;
+  min-width: 40%;
+  max-width: 45%;
+  max-height: 650px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+@media all and (max-width: 740px) {
+  .popup-content {
+    display: none;
+  }
+  .pop-up-image-and-content {
+    justify-content: center;
+    align-items: center;
+  }
+  .pop-up-image {
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 650px;
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+  }
+}
+.popup-top-content-container {
+  display: flex;
+  flex-direction: column;
+}
+.popup-link-item {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  text-decoration: none;
+}
+.popup-post-author-profile {
+  height: 32px;
+  width: 32px;
+  margin-right: 16px;
+  border-radius: 16px;
+}
+.popup-post-heading {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+  color: #262626;
+  margin-right: 10px;
+}
+.popup-caption {
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #262626;
+}
+.popup-created-at-post {
+  color: #989898;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 15px;
+  margin-top: -2px;
+  margin-left: 45px;
+}
+.popup-comment-container {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-top: 0px;
+}
+.popup-comment {
+  color: #989898;
+  font-family: 'Roboto';
+  font-size: 13px;
+  line-height: 15px;
+  align-self: center;
+}
+.popup-span {
+  font-family: 'Roboto';
+  font-size: 13px;
+  margin-left: 8px;
+  font-weight: 400;
+  color: #262626;
+}
+.popup-bottom-content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-icons-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.popup-button {
+  height: 22px;
+  width: 22px;
+  background-color: transparent;
+  border: none;
+  padding-left: 0px;
+  margin-right: 24px;
+  cursor: pointer;
+}
+.popup-likes-count {
+  font-family: 'Roboto';
+  font-weight: 600;
+  font-size: 14px;
+  margin-top: 0px;
+  margin-right: 9px;
+  color: #262626;
+}
+.popup-created-at {
+  color: #989898;
+  font-family: 'Roboto';
+  font-size: 14px;
+  margin-top: -6px;
+}

@@ -30,7 +30,7 @@ export const WebsiteLogoLinkItem = styled(Link)`
   @media all and (max-width: 380px) {
     height: 20px;
     width: 36px;
-    right: 22px;
+    margin-right: 22px;
   }
 `
 

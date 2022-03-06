@@ -4,6 +4,7 @@ import {BsGrid3X3} from 'react-icons/bs'
 import {BiCamera} from 'react-icons/bi'
 import LoadingView from '../LoadingView'
 import FailureView from '../FailureView'
+import PostPopup from '../PostPopup'
 
 import Header from '../Header'
 
@@ -118,13 +119,7 @@ export default class MyProfile extends Component {
             {postsCount > 0 ? (
               <ul className="my-profile-posts-list">
                 {posts.map(each => (
-                  <li className="my-profile-post-item" key={each.id}>
-                    <img
-                      src={each.image}
-                      alt="my post"
-                      className="my-profile-post-image"
-                    />
-                  </li>
+                  <PostPopup key={each.id} postObject={each} alt="my post" />
                 ))}
               </ul>
             ) : (

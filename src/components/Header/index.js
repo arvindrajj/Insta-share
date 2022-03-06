@@ -162,18 +162,14 @@ class Header extends Component {
           <LgNavMenu>
             {this.renderSearchContainer()}
             {selectedTabConstance.map(each => (
-              <ButtonEl
-                type="button"
+              <LinkItem
+                to={`/${each.link}`}
                 key={each.tabId}
+                selected={each.tabId === selectedTab}
                 onClick={() => this.onChangeSelectedTab(each.tabId)}
               >
-                <LinkItem
-                  to={`/${each.link}`}
-                  selected={each.tabId === selectedTab}
-                >
-                  {each.displayedText}
-                </LinkItem>
-              </ButtonEl>
+                {each.displayedText}
+              </LinkItem>
             ))}
             <CustomButton type="button" onClick={this.logoutAccount}>
               Logout
