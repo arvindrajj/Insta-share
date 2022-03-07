@@ -60,7 +60,7 @@ export const LgNavMenu = styled.div`
   display: flex;
 
   align-items: center;
-  @media all and (max-width: 779px) {
+  @media all and (max-width: 780px) {
     display: none;
   }
 `
@@ -83,7 +83,6 @@ export const VerySmNavMenu = styled.div`
   width: 100%;
   margin-top: -18px;
   background-color: #ffffff;
-  margin-left: 25px;
   justify-content: center;
   align-items: center;
   @media all and (min-width: 512px) {
@@ -118,6 +117,7 @@ export const SearchContainer = styled.div`
     width: 195px;
   }
   @media all and (max-width: 512px) {
+    margin-top: 4px;
     width: 214px;
   }
 `
@@ -156,6 +156,7 @@ export const LinkItem = styled(Link)`
   line-height: 18px;
   text-decoration: none;
   margin-right: 16px;
+  margin-left: 10px;
   :hover {
     text-decoration: underline #409ef4 2px;
     color: #4094ef;

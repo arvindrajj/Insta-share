@@ -78,8 +78,9 @@ export const StoryImage = styled.img`
 export const Para = styled.p`
   font-family: 'Roboto';
   font-size: 14px;
-  line-height: 24px;
+  line-height: 18px;
   color: #262626;
+  cursor: pointer;
   @media all and (max-width: 512px) {
     font-size: 12px;
     margin-right: 2px;

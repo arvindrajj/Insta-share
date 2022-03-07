@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import {FaSearch} from 'react-icons/fa'
 import {AiFillCloseCircle} from 'react-icons/ai'
+import {RiLogoutBoxFill} from 'react-icons/ri'
 import {withRouter} from 'react-router-dom'
 import Cookies from 'js-cookie'
 
@@ -97,6 +98,11 @@ class Header extends Component {
     selectedTab = JSON.parse(localStorage.getItem('selectedTab'))
     return (
       <SmNavItems>
+        <RiLogoutBoxFill
+          size="25"
+          onClick={this.logoutAccount}
+          cursor="pointer"
+        />
         <LinkItem
           to="/"
           selected={selectedTab === 'HOME'}

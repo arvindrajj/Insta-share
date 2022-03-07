@@ -70,7 +70,6 @@ export default class StoryItemPopup extends Component {
       <UserPostsContext.Consumer>
         {value => {
           const {userPosts} = value
-          console.log(userPosts)
           return (
             <div className="slider-container">
               <Slider {...settings}>

@@ -11,7 +11,7 @@ export const UsersStoryContainer = styled.div`
   margin: 0;
   padding-top: 64px;
   @media all and (max-width: 512px) {
-    padding-top: 80px;
+    padding-top: 115px;
   }
 `
 
@@ -30,7 +30,7 @@ export const StoryItem = styled.div`
 `
 
 export const Box = styled.div`
-  height: 80px;
+  height: 94px;
   width: 80px;
   display: flex;
   justify-content: center;
