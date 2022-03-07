@@ -8,6 +8,7 @@
   width: 100%;
   padding-top: 76px;
 }
+
 .user-profile-content-container {
   display: flex;
   flex-direction: column;
@@ -87,6 +88,7 @@
   border-radius: 36px;
   padding: 3px;
   background-color: #c6c6c8;
+  cursor: pointer;
 }
 .line {
   border: 0.5px solid #c6c6c8;

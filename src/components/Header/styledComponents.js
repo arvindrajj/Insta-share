@@ -156,8 +156,9 @@ export const LinkItem = styled(Link)`
   line-height: 18px;
   text-decoration: none;
   margin-right: 16px;
-  :focus {
+  :hover {
     text-decoration: underline #409ef4 2px;
+    color: #4094ef;
   }
   color: ${props => (props.selected ? '#4094EF' : '#262626')};
   @media all and (max-width: 814px) {

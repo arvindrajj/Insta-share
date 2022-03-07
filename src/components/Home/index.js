@@ -5,6 +5,7 @@ import UserStories from '../UsersStories'
 import LoadingView from '../LoadingView'
 import FailureView from '../FailureView'
 import UserPost from '../UserPost'
+import UserPostsContext from '../../context/UserPostsContext'
 
 import {
   LoaderContainer,
@@ -218,14 +219,21 @@ export default class Home extends Component {
   }
 
   render() {
+    const {userPostsList} = this.state
     return (
-      <HomeRoute>
-        <Header searchPostCaption={this.searchPostCaption} />
-        <BodyContainer>
-          {this.renderAllUsersStories()}
-          {this.renderUsersAllPosts()}
-        </BodyContainer>
-      </HomeRoute>
+      <UserPostsContext.Provider
+        value={{
+          userPosts: userPostsList,
+        }}
+      >
+        <HomeRoute>
+          <Header searchPostCaption={this.searchPostCaption} />
+          <BodyContainer>
+            {this.renderAllUsersStories()}
+            {this.renderUsersAllPosts()}
+          </BodyContainer>
+        </HomeRoute>
+      </UserPostsContext.Provider>
     )
   }
 }

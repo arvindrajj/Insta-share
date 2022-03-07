@@ -1,12 +1,8 @@
+import StoryItemPopup from '../StoryItemPopup'
+
 import './index.css'
 
-import {
-  SliderContainer,
-  StoryItem,
-  StoryImage,
-  Para,
-  UsersStoryContainer,
-} from './styledComponents'
+import {SliderContainer, UsersStoryContainer} from './styledComponents'
 
 const UsersStories = props => {
   const {usersStoriesDetails} = props
@@ -58,19 +54,13 @@ const UsersStories = props => {
   return (
     <UsersStoryContainer>
       <SliderContainer {...settings}>
-        {usersStoriesDetails.map(each => {
-          const length = each.userId.length > 11
-          const wrap = length ? '...' : ''
-          return (
-            <StoryItem key={each.userId}>
-              <StoryImage src={each.storyUrl} alt="user story" />
-              <Para>
-                {each.userId.slice(0, 11)}
-                {wrap}
-              </Para>
-            </StoryItem>
-          )
-        })}
+        {usersStoriesDetails.map(each => (
+          <StoryItemPopup
+            usersStoryDetails={each}
+            key={each.userId}
+            storiesImagesList={usersStoriesDetails}
+          />
+        ))}
       </SliderContainer>
     </UsersStoryContainer>
   )

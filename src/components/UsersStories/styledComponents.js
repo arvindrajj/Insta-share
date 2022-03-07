@@ -29,12 +29,27 @@ export const StoryItem = styled.div`
   margin-left: 22%;
 `
 
+export const Box = styled.div`
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 38px;
+  background-image: linear-gradient(90deg, #e20337, #c60188, #7700c3, #fca103);
+  @media all and (max-width: 512px) {
+    height: 56px;
+    width: 56px;
+    border-radius: 27px;
+  }
+`
+
 export const StoryImage = styled.img`
   height: 78px;
   width: 78px;
-  padding: 3px;
-  background-color: #c6c6c8;
-  border-radius: 36px;
+  border: 3px solid #ffffff;
+  border-radius: 38px;
+  background-color: #ffffff;
   cursor: pointer;
   @media all and (max-width: 512px) {
     height: 55px;
