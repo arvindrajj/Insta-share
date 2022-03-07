@@ -136,7 +136,7 @@ class Header extends Component {
           onKeyDown={this.onEnterPostCaption}
           onChange={this.changeInput}
         />
-        <SearchIconButton type="button" testid="searchIcon">
+        <SearchIconButton type="button" data-testid="searchIcon">
           <FaSearch height="10" width="10" onClick={this.onSearchPostCaption} />
         </SearchIconButton>
       </SearchContainer>

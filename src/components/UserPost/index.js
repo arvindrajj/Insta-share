@@ -90,7 +90,7 @@ export default class UserPost extends Component {
     } = newUserPostDetails
     const latestComments = comments.slice(0, 2)
     return (
-      <PostContainer testid="postItem">
+      <PostContainer data-testid="postItem">
         <ProfileLink to={`/users/${userId}`}>
           <ProfileImageEl src={profilePic} alt="post author profile" />
           <Heading>{userName}</Heading>
