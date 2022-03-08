@@ -1,3 +1,40 @@
+.popup-content {
+  width: 80%;
+  height: 100vh;
+  max-width: 1170px;
+  background-color: transparent;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+@media all and (max-width: 992px) {
+  .popup-content {
+    width: 80%;
+  }
+}
+
+.post-popup-bg-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.post-popup-close-button {
+  background-color: transparent;
+  height: 35px;
+  width: 35px;
+  margin-bottom: 6px;
+  border: none;
+  outline: none;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
 .profile-post-item {
   list-style-type: none;
   margin-bottom: 5px;
@@ -28,7 +65,7 @@
   width: 100%;
   height: 100%;
 }
-.popup-content {
+.popup-item-content {
   background-color: #ffffff;
   min-width: 40%;
   max-width: 45%;
@@ -40,7 +77,7 @@
   padding: 20px;
 }
 @media all and (max-width: 740px) {
-  .popup-content {
+  .popup-item-content {
     display: none;
   }
   .pop-up-image-and-content {

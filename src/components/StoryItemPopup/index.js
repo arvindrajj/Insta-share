@@ -3,17 +3,12 @@
 import {Component} from 'react'
 import {RiCloseLine} from 'react-icons/ri'
 import Slider from 'react-slick'
+// import Popup from 'reactjs-popup'
 import {FaArrowRight, FaArrowLeft} from 'react-icons/fa'
 import {Link} from 'react-router-dom'
 import UserPostsContext from '../../context/UserPostsContext'
 
-import {
-  ReactPopup,
-  PopupBgContainer,
-  CloseButton,
-  ImgContainer,
-  HrLine,
-} from './styledComponents'
+import {ReactPopup, ImgContainer, HrLine} from './styledComponents'
 
 import './index.css'
 
@@ -147,12 +142,16 @@ export default class StoryItemPopup extends Component {
         modal
       >
         {close => (
-          <PopupBgContainer>
-            <CloseButton type="button" onClick={close}>
+          <div className="story-popup-bg-container">
+            <button
+              className="story-popup-close-button"
+              type="button"
+              onClick={close}
+            >
               <RiCloseLine color="#ffffff" size="35" />
-            </CloseButton>
+            </button>
             {this.renderPopupStoryView()}
-          </PopupBgContainer>
+          </div>
         )}
       </ReactPopup>
     )

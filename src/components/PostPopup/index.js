@@ -6,9 +6,14 @@ import {FcLike} from 'react-icons/fc'
 import {FaRegComment} from 'react-icons/fa'
 import {BiShareAlt} from 'react-icons/bi'
 import {Link} from 'react-router-dom'
+import Popup from 'reactjs-popup'
 import LoadingView from '../LoadingView'
 
+/*
+you can import styledComponent (optional)
+
 import {ReactPopup, PopupBgContainer, CloseButton} from './styledComponents'
+*/
 
 import './index.css'
 
@@ -90,7 +95,7 @@ export default class PostPopUp extends Component {
           className="pop-up-image"
           alt="popup post"
         />
-        <div className="popup-content">
+        <div className="popup-item-content">
           <div className="popup-top-content-container">
             <Link to={`/users/${userId}`} className="popup-link-item">
               <img
@@ -179,7 +184,7 @@ export default class PostPopUp extends Component {
     const {postObject, alt} = this.props
     const {image} = postObject
     return (
-      <ReactPopup
+      <Popup
         trigger={
           <li className="profile-post-item">
             <img src={image} alt={alt} className="profile-post-image" />
@@ -188,14 +193,18 @@ export default class PostPopUp extends Component {
         modal
       >
         {close => (
-          <PopupBgContainer>
-            <CloseButton type="button" onClick={close}>
+          <div className="post-popup-bg-container">
+            <button
+              className="post-popup-close-button"
+              type="button"
+              onClick={close}
+            >
               <RiCloseLine color="#ffffff" size="35" />
-            </CloseButton>
+            </button>
             {this.renderPopupViewDetails()}
-          </PopupBgContainer>
+          </div>
         )}
-      </ReactPopup>
+      </Popup>
     )
   }
 }

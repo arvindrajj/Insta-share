@@ -128,3 +128,40 @@
   margin-left: 16px;
   border-radius: 16px;
 }
+
+.popup-content {
+  width: 100%;
+  height: 100vh;
+  max-width: 1400px;
+  background-color: transparent;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.popup-overlay {
+  background: #1a1a1a;
+}
+@media all and (max-width: 992px) {
+  .popup-content {
+    width: 100%;
+  }
+}
+
+.story-popup-bg-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-popup-close-button {
+  background-color: transparent;
+  height: 35px;
+  width: 35px;
+  margin-bottom: 6px;
+  border: none;
+  outline: none;
+  align-self: flex-end;
+  cursor: pointer;
+}
