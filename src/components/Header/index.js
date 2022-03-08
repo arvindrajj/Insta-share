@@ -1,9 +1,14 @@
 import {Component} from 'react'
-import {FaSearch} from 'react-icons/fa'
+import {FaSearch, FaBars} from 'react-icons/fa'
 import {AiFillCloseCircle} from 'react-icons/ai'
 import {RiLogoutBoxFill} from 'react-icons/ri'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import Cookies from 'js-cookie'
+
+import './index.css'
+
+/*
+you can import styledComponent (optional)
 
 import {
   NavContainer,
@@ -23,6 +28,7 @@ import {
   ButtonEl,
   VerySmNavMenu,
 } from './styledComponents'
+*/
 
 const selectedTabConstance = [
   {
@@ -97,55 +103,72 @@ class Header extends Component {
     let {selectedTab} = this.state
     selectedTab = JSON.parse(localStorage.getItem('selectedTab'))
     return (
-      <SmNavItems>
+      <div className="sm-nav-items">
         <RiLogoutBoxFill
           size="25"
           onClick={this.logoutAccount}
           cursor="pointer"
         />
-        <LinkItem
+        <Link
+          className={`header-link-item ${
+            selectedTab === 'HOME' && 'selected-header-nav-link-item'
+          }`}
           to="/"
-          selected={selectedTab === 'HOME'}
           onClick={() => this.onChangeSelectedTab('HOME')}
         >
           Home
-        </LinkItem>
-        <ButtonEl type="button" onClick={this.showSearchContainer}>
-          <LinkItem as="p" selected={selectedTab === 'SEARCH'}>
+        </Link>
+        <button
+          className="header-button-el"
+          type="button"
+          onClick={this.showSearchContainer}
+        >
+          <p
+            className={`header-link-item ${
+              selectedTab === 'SEARCH' && 'selected-header-nav-link-item'
+            }`}
+          >
             Search
-          </LinkItem>
-        </ButtonEl>
-        <LinkItem
+          </p>
+        </button>
+        <Link
           to="/my-profile"
-          selected={selectedTab === 'PROFILE'}
+          className={`header-link-item ${
+            selectedTab === 'PROFILE' && 'selected-header-nav-link-item'
+          }`}
           onClick={() => this.onChangeSelectedTab('PROFILE')}
         >
           Profile
-        </LinkItem>
+        </Link>
         <AiFillCloseCircle
           size="20"
           cursor="pointer"
           onClick={this.onToggleNavMenu}
         />
-      </SmNavItems>
+      </div>
     )
   }
 
   renderSearchContainer = () => {
     const {searchInput} = this.state
     return (
-      <SearchContainer>
-        <InputEl
+      <div className="header-search-container">
+        <input
+          className="header-input-el"
           type="search"
           placeholder="Search Caption"
           value={searchInput}
           onKeyDown={this.onEnterPostCaption}
           onChange={this.changeInput}
         />
-        <SearchIconButton type="button" data-testid="searchIcon">
+        <button
+          className="header-search-icon-button"
+          type="button"
+          testid="searchIcon"
+        >
           <FaSearch height="10" width="10" onClick={this.onSearchPostCaption} />
-        </SearchIconButton>
-      </SearchContainer>
+        </button>
+      </div>
     )
   }
 
@@ -153,48 +176,58 @@ class Header extends Component {
     const {showSmNavMenu, showSearchContainer} = this.state
     const selectedTab = JSON.parse(localStorage.getItem('selectedTab'))
     return (
-      <NavContainer>
-        <ContentContainer>
-          <WebsiteLogoLinkItem
+      <div className="header-nav-container">
+        <div className="header-content-container">
+          <Link
+            className="header-website-logo-link-item"
             to="/"
             onClick={() => this.onChangeSelectedTab('HOME')}
           >
-            <WebsiteLogo
+            <img
+              className="header-website-logo"
               src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646127088/Standard_Collection_8_mvnxfo.svg"
               alt="website logo"
             />
-            <Heading>Insta Share</Heading>
-          </WebsiteLogoLinkItem>
-          <LgNavMenu>
+            <h1 className="header-heading">Insta Share</h1>
+          </Link>
+          <div className="lg-nav-menu">
             {this.renderSearchContainer()}
             {selectedTabConstance.map(each => (
-              <LinkItem
+              <Link
+                className={`header-link-item ${
+                  selectedTab === each.tabId && 'selected-header-nav-link-item'
+                }`}
                 to={`/${each.link}`}
                 key={each.tabId}
-                selected={each.tabId === selectedTab}
                 onClick={() => this.onChangeSelectedTab(each.tabId)}
               >
                 {each.displayedText}
-              </LinkItem>
+              </Link>
             ))}
-            <CustomButton type="button" onClick={this.logoutAccount}>
+            <button
+              className="header-custom-button"
+              type="button"
+              onClick={this.logoutAccount}
+            >
               Logout
-            </CustomButton>
-          </LgNavMenu>
+            </button>
+          </div>
           {showSearchContainer && (
-            <SmNavMenu>{this.renderSearchContainer()}</SmNavMenu>
+            <div className="sm-nav-menu">{this.renderSearchContainer()}</div>
           )}
           {showSmNavMenu ? (
-            <SmNavMenu>{this.renderMenu()}</SmNavMenu>
+            <div className="sm-nav-menu">{this.renderMenu()}</div>
           ) : (
-            <BarIcon onClick={this.onToggleNavMenu} />
+            <FaBars onClick={this.onToggleNavMenu} className="bar-icon" />
           )}
-        </ContentContainer>
-        {showSmNavMenu && <VerySmNavMenu>{this.renderMenu()}</VerySmNavMenu>}
-        {showSearchContainer && (
-          <VerySmNavMenu>{this.renderSearchContainer()}</VerySmNavMenu>
+        </div>
+        {showSmNavMenu && (
+          <div className="very-sm-nav-menu">{this.renderMenu()}</div>
         )}
-      </NavContainer>
+        {showSearchContainer && (
+          <div className="very-sm-nav-menu">{this.renderSearchContainer()}</div>
+        )}
+      </div>
     )
   }
 }

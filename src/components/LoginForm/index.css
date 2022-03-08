@@ -1,0 +1,148 @@
+.login-app-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-lg-website-image-el {
+  height: 372px;
+  max-width: 582px;
+}
+@media all and (max-width: 1092px) {
+  .login-lg-website-image-el {
+    width: 420px;
+    height: 280px;
+  }
+}
+@media all and (max-width: 767px) {
+  .login-lg-website-image-el {
+    display: none;
+  }
+}
+
+.login-website-logo {
+  height: 42px;
+  width: 82px;
+}
+@media all and (max-width: 380px) {
+  .login-website-logo {
+    height: 40px;
+    width: 78px;
+  }
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 458px;
+  width: 456px;
+  border-radius: 8px;
+  background: #fefeff;
+  box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
+}
+
+@media all and (max-width: 380px) {
+  .login-container {
+    width: 360px;
+    height: 640px;
+  }
+}
+
+.login-form-el {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-heading-el {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  text-align: center;
+  color: #262626;
+  margin-bottom: 24px;
+}
+
+.login-input-label-container {
+  display: flex;
+  height: 84px;
+  width: 330px;
+  border-radius: 0px;
+  flex-direction: column;
+}
+@media all and (max-width: 380px) {
+  .login-input-label-container {
+    height: 64px;
+    width: 312px;
+  }
+}
+
+.login-label-el {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.login-input-el {
+  height: 40px;
+  width: 330px;
+  top: 8px;
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  padding: 8px;
+  background: #eeeeee;
+}
+@media all and (max-width: 380px) {
+  .login-input-el {
+    height: 40px;
+    width: 312px;
+  }
+}
+
+.login-custom-button {
+  height: 40px;
+  width: 330px;
+  margin-top: 20px;
+  border-radius: 8px;
+  background: #4094ef;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+@media all and (max-width: 380px) {
+  .login-custom-button {
+    height: 40px;
+    width: 312px;
+  }
+}
+
+.login-input-checkbox-el {
+  height: 15px;
+  width: 15px;
+}
+
+.login-show-password-container {
+  display: flex;
+  margin-top: -6px;
+  align-items: center;
+}
+
+.login-para {
+  font-size: 14px;
+  color: #262626;
+  margin-left: 5px;
+  font-family: 'Roboto';
+}
+
+.login-error-msg-para {
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #ef4444;
+}

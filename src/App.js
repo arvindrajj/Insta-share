@@ -6,7 +6,7 @@ import Home from './components/Home'
 import MyProfile from './components/MyProfile'
 import UserProfile from './components/userProfile'
 import ProtectedRoute from './components/ProtectedRoute'
-import NotFound from './components/NotFound'
+import BadPath from './components/BadPath'
 
 const App = () => (
   <Switch>
@@ -14,8 +14,8 @@ const App = () => (
     <ProtectedRoute exact path="/" component={Home} />
     <ProtectedRoute exact path="/my-profile" component={MyProfile} />
     <ProtectedRoute exact path="/users/:id" component={UserProfile} />
-    <Route exact path="/not-found" component={NotFound} />
-    <Redirect to="/not-found" />
+    <Route exact path="/bad-path" component={BadPath} />
+    <Redirect to="/bad-path" />
   </Switch>
 )
 

@@ -1,11 +1,17 @@
 import Loader from 'react-loader-spinner'
 
+/*
+you can import styledComponent (optional)
+
 import {LoaderContainer} from './styledComponents'
+*/
+
+import './index.css'
 
 const LoadingView = () => (
-  <LoaderContainer data-testid="loader">
+  <div className="page-loader-container" testid="loader">
     <Loader type="TailSpin" color="#4094EF" height={50} width={50} />
-  </LoaderContainer>
+  </div>
 )
 
 export default LoadingView

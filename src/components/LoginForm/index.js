@@ -2,6 +2,9 @@ import {Component} from 'react'
 import Cookies from 'js-cookie'
 import {Redirect} from 'react-router-dom'
 
+/*
+you can import styledComponent (optional)
+
 import {
   LoginAppContainer,
   LgWebsiteImageEl,
@@ -18,6 +21,9 @@ import {
   CustomButton,
   ErrorMsgPara,
 } from './styledComponents'
+*/
+
+import './index.css'
 
 export default class LoginForm extends Component {
   state = {
@@ -74,51 +80,64 @@ export default class LoginForm extends Component {
       return <Redirect to="/" />
     }
     return (
-      <LoginAppContainer>
-        <LgWebsiteImageEl
+      <div className="login-app-container">
+        <img
+          className="login-lg-website-image-el"
           src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646126939/InstaShareWebLogo_hmfmhc.jpg"
           alt="website login"
         />
-        <LoginContainer>
-          <WebsiteLogo
+        <div className="login-container">
+          <img
+            className="login-website-logo"
             src="https://res.cloudinary.com/dbq6ql3ik/image/upload/v1646127088/Standard_Collection_8_mvnxfo.svg"
             alt="website logo"
           />
-          <HeadingEl>Insta Share</HeadingEl>
-          <FormEl onSubmit={this.submitForm}>
-            <InputLabelContainer>
-              <LabelEl htmlFor="username">USERNAME</LabelEl>
-              <InputEl
+          <h1 className="login-heading-el">Insta Share</h1>
+          <form className="login-form-el" onSubmit={this.submitForm}>
+            <div className="login-input-label-container">
+              <label className="login-label-el" htmlFor="username">
+                USERNAME
+              </label>
+              <input
+                className="login-input-el"
                 type="text"
                 placeholder="Username"
                 id="username"
                 value={username}
                 onChange={this.changeUsername}
               />
-            </InputLabelContainer>
-            <InputLabelContainer>
-              <LabelEl htmlFor="password">PASSWORD</LabelEl>
-              <InputEl
+            </div>
+            <div className="login-input-label-container">
+              <label className="login-label-el" htmlFor="password">
+                PASSWORD
+              </label>
+              <input
+                className="login-input-el"
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Password"
                 id="password"
                 value={password}
                 onChange={this.changePassword}
               />
-              <ShowPasswordContainer>
-                <InputCheckBoxEl
+              <div className="login-show-password-container">
+                <input
+                  className="login-input-checkbox-el"
                   type="checkbox"
                   checked={showPassword}
                   onChange={this.toggleShowPassword}
                 />
-                <Para>Show Password</Para>
-              </ShowPasswordContainer>
-            </InputLabelContainer>
-            <CustomButton type="submit">Login</CustomButton>
-            {showSubmitError && <ErrorMsgPara>{errorMsg}</ErrorMsgPara>}
-          </FormEl>
-        </LoginContainer>
-      </LoginAppContainer>
+                <p className="login-para">Show Password</p>
+              </div>
+            </div>
+            <button className="login-custom-button" type="submit">
+              Login
+            </button>
+            {showSubmitError && (
+              <p className="login-error-msg-para">{errorMsg}</p>
+            )}
+          </form>
+        </div>
+      </div>
     )
   }
 }

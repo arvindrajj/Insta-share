@@ -181,7 +181,7 @@
 
 @media all and (max-width: 530px) {
   .user-profile-details-container {
-    min-width: none;
+    min-width: 80%;
   }
   .user-profile {
     margin-right: 24px;

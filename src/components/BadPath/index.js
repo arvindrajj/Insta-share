@@ -1,6 +1,6 @@
 import './index.css'
 
-const NotFound = props => {
+const BadPath = props => {
   const goToHomePage = () => {
     const {history} = props
     history.replace('/')
@@ -28,4 +28,4 @@ const NotFound = props => {
   )
 }
 
-export default NotFound
+export default BadPath

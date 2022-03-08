@@ -4,8 +4,11 @@ import Header from '../Header'
 import UserStories from '../UsersStories'
 import LoadingView from '../LoadingView'
 import FailureView from '../FailureView'
-import UserPost from '../UserPost'
+import PostItem from '../PostItem'
 import UserPostsContext from '../../context/UserPostsContext'
+
+/*
+you can import styledComponent (optional)
 
 import {
   LoaderContainer,
@@ -13,6 +16,7 @@ import {
   HomeRoute,
   UserPostsListEl,
 } from './styledComponents'
+*/
 
 import './index.css'
 
@@ -155,7 +159,11 @@ export default class Home extends Component {
       case 'SUCCESS':
         return this.renderUsersStories()
       case 'LOADING':
-        return <LoaderContainer>{this.renderLoaderView()}</LoaderContainer>
+        return (
+          <div className="stories-loader-container">
+            {this.renderLoaderView()}
+          </div>
+        )
       case 'FAILURE':
         return this.renderFailureView()
       default:
@@ -168,15 +176,15 @@ export default class Home extends Component {
     return (
       <>
         {userPostsList.length > 0 ? (
-          <UserPostsListEl>
+          <div className="home-user-posts-list-el">
             {userPostsList.map(each => (
-              <UserPost
+              <PostItem
                 key={each.postId}
                 userPostDetails={each}
                 comments={each.comments}
               />
             ))}
-          </UserPostsListEl>
+          </div>
         ) : (
           <div className="search-not-found-container">
             <img
@@ -226,13 +234,13 @@ export default class Home extends Component {
           userPosts: userPostsList,
         }}
       >
-        <HomeRoute>
+        <div className="home-route">
           <Header searchPostCaption={this.searchPostCaption} />
-          <BodyContainer>
+          <div className="home-body-container">
             {this.renderAllUsersStories()}
             {this.renderUsersAllPosts()}
-          </BodyContainer>
-        </HomeRoute>
+          </div>
+        </div>
       </UserPostsContext.Provider>
     )
   }

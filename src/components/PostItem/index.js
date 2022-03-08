@@ -4,6 +4,10 @@ import {BsHeart} from 'react-icons/bs'
 import {FcLike} from 'react-icons/fc'
 import {FaRegComment} from 'react-icons/fa'
 import {BiShareAlt} from 'react-icons/bi'
+import {Link} from 'react-router-dom'
+
+/*
+you can import styledComponent (optional)
 
 import {
   PostContainer,
@@ -20,8 +24,10 @@ import {
   SpanEl,
   CreatedAtPara,
 } from './styledComponents'
+*/
+import './index.css'
 
-export default class UserPost extends Component {
+export default class PostItem extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -90,15 +96,23 @@ export default class UserPost extends Component {
     } = newUserPostDetails
     const latestComments = comments.slice(0, 2)
     return (
-      <PostContainer data-testid="postItem">
-        <ProfileLink to={`/users/${userId}`}>
-          <ProfileImageEl src={profilePic} alt="post author profile" />
-          <Heading>{userName}</Heading>
-        </ProfileLink>
-        <PostImageEl src={postDetails.imageUrl} alt="post" />
-        <PostContentContainer>
-          <IconsContainer>
-            <ButtonEl type="button">
+      <div className="post-item-container" testid="postItem">
+        <Link className="post-item-profile-link" to={`/users/${userId}`}>
+          <img
+            className="post-item-profile-image-el"
+            src={profilePic}
+            alt="post author profile"
+          />
+          <h1 className="post-item-heading">{userName}</h1>
+        </Link>
+        <img
+          className="post-item-image-el"
+          src={postDetails.imageUrl}
+          alt="post"
+        />
+        <div className="post-item-content-container">
+          <div className="post-item-icons-container">
+            <button className="post-item-button-el" type="button">
               {isLiked ? (
                 <FcLike
                   testid="unLikeIcon"
@@ -113,35 +127,35 @@ export default class UserPost extends Component {
                   onClick={() => this.onToggleLikePost({postId, status: true})}
                 />
               )}
-            </ButtonEl>
-            <ButtonEl type="button">
+            </button>
+            <button className="post-item-button-el" type="button">
               <FaRegComment size="20" color="#475569" />
-            </ButtonEl>
-            <ButtonEl type="button">
+            </button>
+            <button className="post-item-button-el" type="button">
               <BiShareAlt size="20" color="#475569" />
-            </ButtonEl>
-          </IconsContainer>
-          <HighlightedPara>
+            </button>
+          </div>
+          <p className="post-item-highlighted-para">
             {isLiked ? parseInt(likesCount) + 1 : likesCount} likes
-          </HighlightedPara>
-          <Para>{postDetails.caption}</Para>
+          </p>
+          <p className="post-item-para">{postDetails.caption}</p>
           {latestComments.map(each => {
             const length = each.userId.length > 14
             const wrap = length ? '...' : ''
             return (
-              <CommentContainer key={each.userId}>
-                <HighlightedPara>
+              <div className="post-item-comment-container" key={each.userId}>
+                <p className="post-item-highlighted-para">
                   {each.userId.slice(0, 14)}
                   {wrap}
                   {'   '}
-                  <SpanEl>{each.comment}</SpanEl>
-                </HighlightedPara>
-              </CommentContainer>
+                  <span className="post-item-span-el">{each.comment}</span>
+                </p>
+              </div>
             )
           })}
-          <CreatedAtPara>{createdAt}</CreatedAtPara>
-        </PostContentContainer>
-      </PostContainer>
+          <p className="post-item-created-at-para">{createdAt}</p>
+        </div>
+      </div>
     )
   }
 }

@@ -1,8 +1,13 @@
+import Slider from 'react-slick'
 import StoryItemPopup from '../StoryItemPopup'
 
 import './index.css'
 
+/*
+you can import styledComponent (optional)
+
 import {SliderContainer, UsersStoryContainer} from './styledComponents'
+*/
 
 const UsersStories = props => {
   const {usersStoriesDetails} = props
@@ -52,8 +57,8 @@ const UsersStories = props => {
   }
 
   return (
-    <UsersStoryContainer>
-      <SliderContainer {...settings}>
+    <div className="home-users-story-container">
+      <Slider className="home-stories-slider-container" {...settings}>
         {usersStoriesDetails.map(each => (
           <StoryItemPopup
             usersStoryDetails={each}
@@ -61,8 +66,8 @@ const UsersStories = props => {
             storiesImagesList={usersStoriesDetails}
           />
         ))}
-      </SliderContainer>
-    </UsersStoryContainer>
+      </Slider>
+    </div>
   )
 }
 

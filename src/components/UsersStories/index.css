@@ -1,4 +1,21 @@
-.slick-prev:before,
-.slick-next:before {
-  color: black;
+.home-users-story-container {
+  width: 100vw;
+  height: 194px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0;
+  padding-top: 64px;
+}
+@media all and (max-width: 512px) {
+  .home-users-story-container {
+    padding-top: 115px;
+  }
+}
+
+.home-stories-slider-container {
+  width: 80%;
+  background-color: #ffffff;
+  max-width: 1100px;
 }

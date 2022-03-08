@@ -11,10 +11,6 @@ import {
   ReactPopup,
   PopupBgContainer,
   CloseButton,
-  StoryItem,
-  StoryImage,
-  Para,
-  Box,
   ImgContainer,
   HrLine,
 } from './styledComponents'
@@ -128,19 +124,24 @@ export default class StoryItemPopup extends Component {
       <ReactPopup
         trigger={
           <div key={usersStoryDetails.userId} className="popup-trigger">
-            <StoryItem
+            <div
+              className="insta-story-item"
               onClick={() =>
                 this.onChangeCurrentSlider(usersStoryDetails.userId)
               }
             >
-              <Box>
-                <StoryImage src={usersStoryDetails.storyUrl} alt="user story" />
-              </Box>
-              <Para>
+              <div className="story-box">
+                <img
+                  className="insta-story-image"
+                  src={usersStoryDetails.storyUrl}
+                  alt="user story"
+                />
+              </div>
+              <p className="insta-story-para">
                 {usersStoryDetails.userId.slice(0, 11)}
                 {wrap}
-              </Para>
-            </StoryItem>
+              </p>
+            </div>
           </div>
         }
         modal

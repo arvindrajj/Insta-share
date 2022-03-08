@@ -7,6 +7,61 @@
   width: 80px;
 }
 
+.insta-story-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 22%;
+}
+
+.story-box {
+  height: 80px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 38px;
+  background-image: linear-gradient(90deg, #e20337, #c60188, #7700c3, #fca103);
+}
+@media all and (max-width: 512px) {
+  .story-box {
+    height: 56px;
+    width: 56px;
+    border-radius: 27px;
+  }
+}
+
+.insta-story-image {
+  height: 78px;
+  width: 78px;
+  border: 3px solid #ffffff;
+  background-color: #ffffff;
+  border-radius: 38px;
+  cursor: pointer;
+}
+@media all and (max-width: 512px) {
+  .insta-story-image {
+    height: 55px;
+    width: 55px;
+    border-radius: 27px;
+  }
+}
+
+.insta-story-para {
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 18px;
+  color: #262626;
+  cursor: pointer;
+}
+@media all and (max-width: 512px) {
+  .insta-story-para {
+    font-size: 12px;
+    margin-right: 2px;
+  }
+}
+
 .sliderContainer {
   width: 100%;
   margin: 15px;
